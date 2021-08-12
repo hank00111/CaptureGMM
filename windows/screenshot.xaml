@@ -1,0 +1,358 @@
+﻿<Window x:Class="CaptureGMM.windows.screenshot"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaptureGMM.windows"
+        mc:Ignorable="d"
+        Title="CaptureGMM_s"
+        Height="500"
+        Width="500"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        ResizeMode="CanMinimize"
+        Background="#02000000"
+        Topmost="True"
+        ShowInTaskbar="False"
+        InputMethod.IsInputMethodEnabled="False">
+    <Window.Resources>
+
+        <Style TargetType="{x:Type ToolTip}">
+
+
+            <Setter Property="Background"
+                    Value="#CC000000" />
+            <Setter Property="Foreground"
+                    Value="#7F63FBFF" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="#664BC8FF" />
+            <Setter Property="Padding"
+                    Value="4" />
+
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+        <Path Fill="#4C000000">
+            <Path.Data>
+                <CombinedGeometry GeometryCombineMode="Xor">
+                    <CombinedGeometry.Geometry1>
+                        <RectangleGeometry Rect="0,0,0,0" />
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <RectangleGeometry x:Name="rg_遮罩"
+                                           Rect="200,200,20,20" />
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Path.Data>
+        </Path>
+        <Rectangle x:Name="b_上"
+                   Fill="#7F63FBFF"
+                   VerticalAlignment="Top"
+                   Height="20"
+                   Stroke="#020FFFB7"
+                   StrokeThickness="19"
+                   Cursor="SizeNS"
+                   StrokeLineJoin="Round"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="b_下"
+                   Fill="#7F63FBFF"
+                   VerticalAlignment="Top"
+                   Height="20"
+                   Stroke="#020FFFB7"
+                   StrokeThickness="19"
+                   Cursor="SizeNS"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="b_右"
+                   Fill="#7F63FBFF"
+                   HorizontalAlignment="Left"
+                   Width="20"
+                   StrokeThickness="19"
+                   Stroke="#00000000"
+                   Cursor="SizeWE"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1.1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="b_左"
+                   Fill="#7F63FBFF"
+                   HorizontalAlignment="Left"
+                   Width="20"
+                   StrokeThickness="19"
+                   Stroke="#00000000"
+                   Cursor="SizeWE"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1.1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="b_中心拖曳"
+                   Fill="#0000EB78"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left" />
+        <Rectangle x:Name="b_左上"
+                   Fill="#0063FBFF"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Width="20"
+                   Height="20"
+                   RadiusX="20"
+                   RadiusY="20"
+                   Cursor="SizeAll"
+                   Stroke="#3363FBFF" />
+        <Rectangle x:Name="b_右上"
+                   Fill="#0063FBFF"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="20"
+                   Height="20"
+                   RadiusX="20"
+                   RadiusY="20"
+                   Cursor="SizeAll"
+                   Stroke="#3363FBFF" />
+        <Rectangle x:Name="b_右下"
+                   Fill="#0063FBFF"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="20"
+                   Height="20"
+                   RadiusX="20"
+                   RadiusY="20"
+                   Cursor="SizeAll"
+                   Stroke="#3363FBFF" />
+        <Rectangle x:Name="b_左下"
+                   Fill="#0063FBFF"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="20"
+                   Height="20"
+                   RadiusX="20"
+                   RadiusY="20"
+                   Cursor="SizeAll"
+                   Stroke="#3363FBFF" />
+        <Border x:Name="st_按鈕群"
+                Background="#E51E1E1E"
+                BorderThickness="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Padding="5"
+                BorderBrush="#CCFDFDFD">
+            <StackPanel Orientation="Horizontal"
+                        Height="40">
+
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Button}">
+
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource sol_白}" />
+                        <Setter Property="FontSize"
+                                Value="18" />
+
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border x:Name="b3"
+                                                BorderBrush="{x:Null}"
+                                                Background="#00000000" />
+                                        <!--內容-->
+                                        <ContentPresenter  HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           IsHitTestVisible="False"
+                                                           Margin="{TemplateBinding Padding}" />
+
+                                    </Grid>
+
+                                    <!--觸發事件-->
+                                    <ControlTemplate.Triggers>
+
+                                        <!--移入-->
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="true">
+                                            <Setter TargetName="b3"
+                                                    Property="Background"
+                                                    Value="#19FFFFFF" />
+                                        </Trigger>
+
+                                    </ControlTemplate.Triggers>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button x:Name="button_關閉"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="40"
+                        Height="40"
+                        BorderBrush="White"
+                        Foreground="Black"
+                        Background="#7F000000"
+                        ToolTip="關閉"
+                        Margin="0,0,5,0">
+                    <Path Stretch="Fill"
+                          Fill="#FFBF0000"
+                          Data="F1 M 51.3284,-16.611L 48.5002,-19.4391L 22.0556,7.00513L -4.38911,-19.4391L -7.21724,-16.611L 19.2275,9.83326L -7.21724,36.2777L -4.38911,39.1058L 22.0556,12.6614L 48.5002,39.1058L 51.3284,36.2777L 24.8837,9.83326L 51.3284,-16.611 Z "
+                          Height="30"
+                          Width="30"
+                          Stroke="#FFBF0000" />
+                </Button>
+                <Button x:Name="button_重新"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="40"
+                        Height="40"
+                        BorderBrush="White"
+                        Foreground="Black"
+                        Background="#7F000000"
+                        ToolTip="重新抓取"
+                        Margin="0,0,5,0">
+                    <Path Stretch="Fill"
+                          Fill="#FFE4E4E4"
+                          Data="F1 M 30.6634,1.54564L 49.0697,4.39338L 51.9095,-13.9661L 47.9563,-14.5774L 46.0947,-2.54023C 43.8774,-7.2541 40.4077,-11.331 36.0306,-14.2284C 29.6713,-18.4388 22.0527,-19.9198 14.5769,-18.3997C 7.10286,-16.8794 0.667936,-12.5396 -3.543,-6.17957C -12.2344,6.9499 -8.62373,24.7026 4.50579,33.3946C 9.34632,36.5984 14.8125,38.1296 20.2239,38.1296C 29.4915,38.1296 38.5918,33.6342 44.0801,25.3451C 45.2506,23.5756 46.2233,21.6836 46.9694,19.7215L 43.2325,18.2983C 42.5891,19.9858 41.7519,21.614 40.7441,23.1375C 33.2714,34.4291 18.0046,37.5327 6.71419,30.0587C -4.5762,22.5847 -7.68168,7.31844 -0.207064,-3.97129C 7.26752,-15.261 22.5345,-18.3665 33.8222,-10.8925C 37.6422,-8.36409 40.659,-4.79169 42.5609,-0.66156L 31.2754,-2.40675L 30.6634,1.54564 Z "
+                          Height="30"
+                          Width="30" />
+                </Button>
+
+
+                <Button x:Name="button_確認_jpg"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Width="40"
+                        Height="40"
+                        BorderBrush="White"
+                        Foreground="Black"
+                        Background="#7F000000"
+                        ToolTip="儲存+傳送"
+                        Margin="0">
+                    <Viewbox Height="32"
+                             Width="32">
+                        <Canvas Width="56.1771"
+                                Height="57.9641">
+                            <Path Width="56.177"
+                                  Height="39.206"
+                                  Canvas.Left="0"
+                                  Canvas.Top="11"
+                                  Stretch="Fill"
+                                  Fill="#3EF555"
+                                  Data="F1 M 52.1771,3.06373L 49.1133,0L 20.0345,29.0788L 3.06386,12.108L 0,15.1719L 20.0345,35.2064L 52.1771,3.06373 Z " />
+
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+                
+            </StackPanel>
+
+        </Border>
+
+        <Rectangle x:Name="rect_游標"
+                   HorizontalAlignment="Left"
+                   Height="60"
+                   VerticalAlignment="Top"
+                   Width="60"
+                   Cursor="Cross"
+                   Fill="#00000000" />
+        <StackPanel x:Name="st_size與放大鏡"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="200,100,0,0">
+            <Label x:Name="lab_size"
+                   HorizontalAlignment="Left"
+                   Content="200 ╳ 600"
+                   VerticalAlignment="Top"
+                   Foreground="White"
+                   FontSize="16"
+                   Padding="5"
+                   Background="#E51E1E1E"
+                   FontWeight="Normal"
+                   BorderBrush="#7FFDFDFD"
+                   BorderThickness="1" />
+            <Border x:Name="border_放大鏡"
+                    IsHitTestVisible="False"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    BorderThickness="1"
+                    BorderBrush="#FFECECEC"
+                    Padding="0"
+                    Margin="0,5,0,0">
+                <Grid Margin="0">
+                    <Image x:Name="img_放大鏡"
+                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                           RenderOptions.ClearTypeHint="Enabled"
+                           Panel.ZIndex="27"
+                           Stretch="None"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0,0">
+                        <Image.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="5"
+                                                ScaleY="5" />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </Image.LayoutTransform>
+                    </Image>
+                    <Rectangle Fill="#B2FDFDFD"
+                               HorizontalAlignment="Left"
+                               Width="1"
+                               Margin="74,0,0,0"
+                               Panel.ZIndex="56" />
+                    <Rectangle Fill="#B2FDFDFD"
+                               HorizontalAlignment="Left"
+                               Width="1"
+                               Margin="80,0,0,0"
+                               Panel.ZIndex="56" />
+                    <Rectangle Fill="#B2FDFDFD"
+                               Height="1"
+                               Margin="0,74,0,0"
+                               VerticalAlignment="Top"
+                               Panel.ZIndex="56" />
+                    <Rectangle Fill="#B2FDFDFD"
+                               Height="1"
+                               Margin="0,80,0,0"
+                               VerticalAlignment="Top"
+                               Panel.ZIndex="56" />
+
+                </Grid>
+
+            </Border>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -485,7 +485,7 @@ namespace CaptureGMM.windows
             };
 
             button_關閉.Click += (sender, e) => {
-                send_timer.IsEnabled = false;
+                //send_timer.IsEnabled = false;
                 func_關閉程式();
             };
 
